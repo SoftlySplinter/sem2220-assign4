@@ -65,10 +65,10 @@ and social issues which legal and professional element cannot, necessarily,
 cover.
 
 Of course monitoring of data, especially from mobile devices, doesn't have to
-be used for nefarious purposes. Applications commonly use data mining techniques
-to provide a better experience for their users and cloud services are so popular
-that imagining a world where all a users data is stored solely on a single
-device is almost impossible.
+be used for nefarious purposes. Applications commonly use data mining 
+techniques to provide a better experience for their users and cloud services 
+are so popular that imagining a world where all a users data is stored solely 
+on a single device is almost impossible.
 
 \newpage
 \section{Technical Methods for Monitoring Mobile Devices}
@@ -110,8 +110,13 @@ applications require network access to load data from external servers. More
 specific applications, which perform tasks like route tracking, will require
 the use of more than one of these sensors.
 
-So how do mobile platforms allow developers to access these systems when they
-have legitimate reasons?
+\newpage
+\section{Protection Against Unwanted Monitoring}
+
+Unfortunately, due to the structure of the \gls{GSM} network, as long as a
+mobile device is on and allowed to connect to the network it can be tracked.
+With the addition of a \gls{SIM} card it can even be tied to a specific
+individual. Under \cite{directive2006/24/EC}
 
 Modern mobile platforms typically have some sort of security system and ways in
 which applications can be given access to secure elements of the mobile device.
@@ -120,7 +125,7 @@ control the access to the various facilities of the device.
 
 \subsection{Android Security Facilities}
 
-\cite{google2013security} describes the methods the Android system uses to
+\cite{google2013security} describes the methods that the Android system uses to
 secure the environment. The main advantage Android gains in this area is that
 uses \gls{SELinux}, which confines the access of programs based on different
 policies.
@@ -144,12 +149,25 @@ provides it somehow.
 
 
 \subsection{iOS Security Facilities}
+\cite{apple2012security} defines the methods that the iOS system uses to secure
+the environment. Similar to Android iOS third-party applications are sandboxed 
+from each other, although a lot of this is done by the iOS runtime. All
+applications have their own file spaces which can only be accessed through the
+iOS defined API.
+
+Access to secure API elements is defined through entitlements; signed key-value
+pairs specific to applications. However, it should be noted that these
+entitlements are not required to access elements such as the GPS or microphone
+and are more typically used by system applications and daemons to perform tasks
+that would typically require root access.
+
+The iOS ecosystem is heavily reliant on the Apple App
+Store\cite{apple2013appstore} to provide security against the malicious
+collection of data from iOS applications.
+
+%\subsection{Windows 8 Phone Security Features}
 
 
-\subsection{Windows 8 Phone Security Features}
-
-\newpage
-\section{Protection Against Unwanted Monitoring}
 
 \newpage
 \section{Implications of Mobile-based Monitoring}
