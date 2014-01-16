@@ -16,6 +16,10 @@
 \usepackage{helvet}
 \renewcommand{\familydefault}{\sfdefault}
 
+\newacronym{GSM}{GSM}{Global System for Mobile Communications}
+\newacronym{NSA}{NSA}{National Security Agency}
+\newacronym{SELinux}{SELinux}{Security-Enhanced Linux}
+\newacronym{SIM}{SIM}{Subscriber Identity Module}
 
 \newcommand*{\titleGM}{\begingroup
 \hbox{ 
@@ -41,7 +45,7 @@
 
 There has been a lot of news in the press in the last year about surveillance
 programs run by many countries security agencies, particularly focused on the
-collection of phone records by the NSA\cite{greenwald2013nsa}.
+collection of phone records by the \gls{NSA}\cite{greenwald2013nsa}.
 
 It comes as no surprise that this has brought about the question: 
 
@@ -68,6 +72,33 @@ device is almost impossible.
 
 \newpage
 \section{Technical Methods for Monitoring Mobile Devices}
+
+Because of the structure of the \gls{GSM}, any mobile device which accesses
+the mobile network can be tracked to, at worst, the nearest cell tower. In 
+fact the \gls{NSA} is known to use this data to track targets and identify 
+possible accomplices\cite{classified2012co-travel}. There are also other
+stories of UK public organisations performing similar
+actions\cite{gallager2011met}\cite{hopkins2013gchq}.
+
+Though this is a worrying concept, there is some important information that the
+U.S. has given in \cite{clapper2013facts} which denies that any information
+collected cannot be used to target any individual without a prior specific and
+documented reason to do so. In the case of monitoring of non-U.S. citizens
+there must also be a agreement with the country of their citizenship.
+
+It is the monitoring which the users agrees to have performed upon them that is
+perhaps more worrying.
+
+Modern mobile platforms typically have some sort of security system and ways in
+which applications can be given access to secure elements of the mobile device. 
+Most of these platforms sandbox third-party application allowing the kernel to
+control the access to the various facilities of the device.
+
+\subsection{Android Security Facilities}
+
+\cite{google2013security} describes the methods the Android system uses to
+secure the environment. The main advantage Android gains in this area is that
+runs a version of \gls{SELinux}
 
 \newpage
 \section{Protection Against Unwanted Monitoring}
