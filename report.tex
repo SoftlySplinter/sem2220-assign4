@@ -89,8 +89,32 @@ there must also be a agreement with the country of their citizenship.
 It is the monitoring which the users agrees to have performed upon them that is
 perhaps more worrying.
 
+Mobile devices, especially tablets and smart phones, have a range of sensors
+which third-party applications may be able to access. These sensors typically
+include a camera, microphone, WiFi antenna and GPS system. As technology
+progresses the accuracy of these sensors is increasing and other sensors such
+as accelerometers are becoming more prevalent.
+
+It could, therefore, be easy for an attacker to write a malicious application
+which simply monitored the GPS location of a person or recorded their
+conversations through the microphone. Or even use any of these systems combined
+to gather a lot of sensitive data.
+
+There have been cases which have been formally
+investigated\cite{ftc2013flashlight} in which legitimate applications collect
+data from users on the side, which are then sold to other companies for
+advertisement revenue.
+
+However, a lot of applications have legitimate uses for these sensors. Most
+applications require network access to load data from external servers. More
+specific applications, which perform tasks like route tracking, will require
+the use of more than one of these sensors.
+
+So how do mobile platforms allow developers to access these systems when they
+have legitimate reasons?
+
 Modern mobile platforms typically have some sort of security system and ways in
-which applications can be given access to secure elements of the mobile device. 
+which applications can be given access to secure elements of the mobile device.
 Most of these platforms sandbox third-party application allowing the kernel to
 control the access to the various facilities of the device.
 
@@ -98,7 +122,31 @@ control the access to the various facilities of the device.
 
 \cite{google2013security} describes the methods the Android system uses to
 secure the environment. The main advantage Android gains in this area is that
-runs a version of \gls{SELinux}
+uses \gls{SELinux}, which confines the access of programs based on different
+policies.
+
+Android adds many features on top of this, the most applicable of these to the
+question of monitoring is the permission model. For a third party application
+to access protected APIs such at GPS positioning or network connections they
+must implicitly define which of these elements they require in the manifest
+file of the application.
+
+This information is displayed to the user when they first install the
+application and when the application updates to add new access to secure APIs.
+
+There are also certain APIs which are not available to third-party 
+applications, but which may be used by pre-installed applications if they are
+signed as part of the OS.
+
+Because applications are sandboxed from one another it should be an impossible
+task to gain confidential information from another application, unless it
+provides it somehow.
+
+
+\subsection{iOS Security Facilities}
+
+
+\subsection{Windows 8 Phone Security Features}
 
 \newpage
 \section{Protection Against Unwanted Monitoring}
