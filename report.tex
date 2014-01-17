@@ -147,6 +147,23 @@ Because applications are sandboxed from one another it should be an impossible
 task to gain confidential information from another application, unless it
 provides it somehow.
 
+\subsubsection{Additional Security Features Provided by the Google Play Store}
+
+Obviously, telling legitimate use of secure API elements from illegitimate use
+is not an easy task, especially for automated systems.
+
+In the mobile ecosystem, the typical method of performing this is to have a
+trusted place, where developers can distribute their applications. In the case
+of Android this is usually the Google Play store, however other stores such as
+the Amazon Appstore do also exist.
+
+The maintainers of such places can then regulate the applications accepted,
+monitor them for any malicious activities and remove them where needed. 
+Google even added a service in 2012 which scanned the Play store for
+applications with a malicious intent by running them on a range of emulated
+services\cite{lockheimer2012android}.
+
+\nocite{lockheimer2012android}
 
 \subsection{iOS Security Facilities}
 \cite{apple2012security} defines the methods that the iOS system uses to secure
