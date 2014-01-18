@@ -9,6 +9,7 @@
 \usepackage{paralist}
 \usepackage{fullpage}
 \usepackage{glossaries}
+\usepackage[hidelinks]{hyperref}
 
 \usepackage{caption}
 \usepackage{subcaption}
@@ -20,6 +21,7 @@
 \newacronym{NSA}{NSA}{National Security Agency}
 \newacronym{SELinux}{SELinux}{Security-Enhanced Linux}
 \newacronym{SIM}{SIM}{Subscriber Identity Module}
+\newacronym{ICO}{ICO}{Information Commissioner's Office}
 
 \newcommand*{\titleGM}{\begingroup
 \hbox{ 
@@ -179,8 +181,10 @@ and are more typically used by system applications and daemons to perform tasks
 that would typically require root access.
 
 The iOS ecosystem is heavily reliant on the Apple App
-Store\cite{apple2013appstore} to provide security against the malicious
+Store to provide security against the malicious
 collection of data from iOS applications.
+
+%TODO how do they do this?
 
 %\subsection{Windows 8 Phone Security Features}
 
@@ -202,8 +206,7 @@ Another, perhaps overlooked, law which could relate in these situations is the
 Contracts law and Licenses.
 
 
-%TODO place this nicely
-% CMA
+\subsection{Impacts of the Computer Misuse Act}
 The Computer Misuse Act does not affect the use of mobile devices for monitoring
 purposes as much as one would suspect. The main issue comes that section 1 of
 this act defines misuse as ``the unauthorised access to computer
@@ -220,7 +223,16 @@ Android permission system).
 Obviously, if an application could hide the fact it was collecting data from a
 permission system and does not disclose this use in terms and conditions, then
 an argument could be made that it is breaking this act.
-% CMA
+
+
+\subsection{Impacts of the Data Protection Act}
+Monitoring data undoubtedly also means storing data and any computerised data
+falls under the Data Protection Act; therefore, any monitoring is going to be
+affected by the Data Protection Act.
+
+\gls{ICO} has released guidelines\cite{ico2012cloud} on the use of cloud 
+computing and how it can be kept legal within the Data Protection Act.
+
 
 
 \newpage
