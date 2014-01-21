@@ -72,7 +72,6 @@ techniques to provide a better experience for their users and cloud services
 are so popular that imagining a world where all a users data is stored solely 
 on a single device is almost impossible.
 
-\newpage
 \section{Technical Methods for Monitoring Mobile Devices}
 
 Because of the structure of the \gls{GSM}, any mobile device which accesses
@@ -112,7 +111,6 @@ applications require network access to load data from external servers. More
 specific applications, which perform tasks like route tracking, will require
 the use of more than one of these sensors.
 
-\newpage
 \section{Protection Against Unwanted Monitoring}
 
 Unfortunately, due to the structure of the \gls{GSM} network, as long as a
@@ -182,15 +180,18 @@ that would typically require root access.
 
 The iOS ecosystem is heavily reliant on the Apple App
 Store to provide security against the malicious
-collection of data from iOS applications.
+collection of data from iOS applications. Because all applications have to be
+reviewed before being accepted into the Apple App Store, and because it is
+difficult to install applications not from the App Store, ones with a malicious
+purpose are somewhat unlikely to be accepted.
 
-%TODO how do they do this?
+\cite{apple2010review}\footnote{This may be an older version as the current
+version requires log in to an Apple developer account} depicts these
+guidelines. These guidelines state that the application must gain user consent
+before using location data and transmitting user data. Any application which
+doesn't adhere to these guidelines will be rejected.
 
-%\subsection{Windows 8 Phone Security Features}
 
-
-
-\newpage
 \section{Implications of Mobile-based Monitoring}
 
 This section will focus on the four main implications of developing software
@@ -311,7 +312,6 @@ as an example, there should be a reasonable explanation as to why an
 application wants to access a protected API and this reason should be presented
 to the user, rather than just the protect API elements an application has.
 
-\newpage
 \section{Conclusions}
 
 Yes, mobile devices have probably aided in being the most monitored individuals
