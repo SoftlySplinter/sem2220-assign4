@@ -1,4 +1,4 @@
-\documentclass[11pt, a4paper]{article}
+\documentclass[12pt, a4paper]{article}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -9,21 +9,29 @@
 \usepackage{paralist}
 \usepackage{fullpage}
 \usepackage{glossaries}
+\usepackage[hidelinks]{hyperref}
 
 \usepackage{caption}
 \usepackage{subcaption}
 
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\newacronym{GSM}{GSM}{Global System for Mobile Communications}
+\newacronym{NSA}{NSA}{National Security Agency}
+\newacronym{SELinux}{SELinux}{Security-Enhanced Linux}
+\newacronym{SIM}{SIM}{Subscriber Identity Module}
+\newacronym{ICO}{ICO}{Information Commissioner's Office}
 
 \newcommand*{\titleGM}{\begingroup
 \hbox{ 
-\hspace*{0.2\textwidth} 
 \rule{1pt}{\textheight} 
-\hspace*{0.05\textwidth} 
-\parbox[b]{0.75\textwidth}{ 
+\hspace*{0.02\textwidth} 
+\parbox[b]{0.97\textwidth}{ 
 
-{\noindent\Huge\bfseries Rapid Growth in Top Level Domains in the Domain Name System}\\[2\baselineskip] % Title
-{\large \textit{SEM5720 - Assignment 1}}\\[4\baselineskip] % Tagline or further description
-{\Large \textsc{Alexander D Brown (adb9)}} % Author name
+{\noindent\Huge\bfseries Mobile Devices have made us the most monitored individuals in history}\\[2\baselineskip] % Title
+{\large \textit{SEM2220 - Assignment 4}}\\[4\baselineskip] % Tagline or further description
+{\Large \textsc{080932464}} % Author name
 
 \vspace{0.5\textheight} 
 }}
@@ -37,7 +45,285 @@
 
 \section{Introduction}
 
-% TODO
+There has been a lot of news in the press in the last year about surveillance
+programs run by many countries security agencies, particularly focused on the
+collection of phone records by the \gls{NSA}\cite{greenwald2013nsa}.
+
+It comes as no surprise that this has brought about the question: 
+
+\begin{quote}
+``Have mobile devices made us the most monitored individuals in history?''
+\end{quote}
+
+To fully understand the depth of this question, one must consider the technical
+methods which are employed to monitor mobile devices and how these methods
+differ across different mobile platforms. In hand with this, one must
+investigate the methods for preventing unwanted monitoring on mobile devices
+and how effective these methods really are.
+
+Finally there are many legal and professional issues which govern the
+collection of data from mobile devices; but there are also a host of ethical
+and social issues which legal and professional element cannot, necessarily,
+cover.
+
+Of course monitoring of data, especially from mobile devices, doesn't have to
+be used for nefarious purposes. Applications commonly use data mining 
+techniques to provide a better experience for their users and cloud services 
+are so popular that imagining a world where all a users data is stored solely 
+on a single device is almost impossible.
+
+\newpage
+\section{Technical Methods for Monitoring Mobile Devices}
+
+Because of the structure of the \gls{GSM}, any mobile device which accesses
+the mobile network can be tracked to, at worst, the nearest cell tower. In 
+fact the \gls{NSA} is known to use this data to track targets and identify 
+possible accomplices\cite{classified2012co-travel}. There are also other
+stories of UK public organisations performing similar
+actions\cite{gallager2011met}\cite{hopkins2013gchq}.
+
+Though this is a worrying concept, there is some important information that the
+U.S. has given in \cite{clapper2013facts} which denies that any information
+collected cannot be used to target any individual without a prior specific and
+documented reason to do so. In the case of monitoring of non-U.S. citizens
+there must also be a agreement with the country of their citizenship.
+
+It is the monitoring which the users agrees to have performed upon them that is
+perhaps more worrying.
+
+Mobile devices, especially tablets and smart phones, have a range of sensors
+which third-party applications may be able to access. These sensors typically
+include a camera, microphone, WiFi antenna and GPS system. As technology
+progresses the accuracy of these sensors is increasing and other sensors such
+as accelerometers are becoming more prevalent.
+
+It could, therefore, be easy for an attacker to write a malicious application
+which simply monitored the GPS location of a person or recorded their
+conversations through the microphone. Or even use any of these systems combined
+to gather a lot of sensitive data.
+
+There have been cases which have been formally
+investigated\cite{ftc2013flashlight} in which legitimate applications collect
+data from users on the side, which are then sold to other companies for
+advertisement revenue.
+
+However, a lot of applications have legitimate uses for these sensors. Most
+applications require network access to load data from external servers. More
+specific applications, which perform tasks like route tracking, will require
+the use of more than one of these sensors.
+
+\newpage
+\section{Protection Against Unwanted Monitoring}
+
+Unfortunately, due to the structure of the \gls{GSM} network, as long as a
+mobile device is on and allowed to connect to the network it can be tracked.
+With the addition of a \gls{SIM} card it can even be tied to a specific
+individual. Under \cite{directive2006/24/EC}
+
+Modern mobile platforms typically have some sort of security system and ways in
+which applications can be given access to secure elements of the mobile device.
+Most of these platforms sandbox third-party application allowing the kernel to
+control the access to the various facilities of the device.
+
+\subsection{Android Security Facilities}
+
+\cite{google2013security} describes the methods that the Android system uses to
+secure the environment. The main advantage Android gains in this area is that
+uses \gls{SELinux}, which confines the access of programs based on different
+policies.
+
+Android adds many features on top of this, the most applicable of these to the
+question of monitoring is the permission model. For a third party application
+to access protected APIs such at GPS positioning or network connections they
+must implicitly define which of these elements they require in the manifest
+file of the application.
+
+This information is displayed to the user when they first install the
+application and when the application updates to add new access to secure APIs.
+
+There are also certain APIs which are not available to third-party 
+applications, but which may be used by pre-installed applications if they are
+signed as part of the OS.
+
+Because applications are sandboxed from one another it should be an impossible
+task to gain confidential information from another application, unless it
+provides it somehow.
+
+\subsubsection{Additional Security Features Provided by the Google Play Store}
+
+Obviously, telling legitimate use of secure API elements from illegitimate use
+is not an easy task, especially for automated systems.
+
+In the mobile ecosystem, the typical method of performing this is to have a
+trusted place, where developers can distribute their applications. In the case
+of Android this is usually the Google Play store, however other stores such as
+the Amazon Appstore do also exist.
+
+The maintainers of such places can then regulate the applications accepted,
+monitor them for any malicious activities and remove them where needed. 
+Google even added a service in 2012 which scanned the Play store for
+applications with a malicious intent by running them on a range of emulated
+services\cite{lockheimer2012android}.
+
+\nocite{lockheimer2012android}
+
+\subsection{iOS Security Facilities}
+\cite{apple2012security} defines the methods that the iOS system uses to secure
+the environment. Similar to Android iOS third-party applications are sandboxed 
+from each other, although a lot of this is done by the iOS runtime. All
+applications have their own file spaces which can only be accessed through the
+iOS defined API.
+
+Access to secure API elements is defined through entitlements; signed key-value
+pairs specific to applications. However, it should be noted that these
+entitlements are not required to access elements such as the GPS or microphone
+and are more typically used by system applications and daemons to perform tasks
+that would typically require root access.
+
+The iOS ecosystem is heavily reliant on the Apple App
+Store to provide security against the malicious
+collection of data from iOS applications.
+
+%TODO how do they do this?
+
+%\subsection{Windows 8 Phone Security Features}
+
+
+
+\newpage
+\section{Implications of Mobile-based Monitoring}
+
+This section will focus on the four main implications of developing software
+which gathers data from mobile devices; legal, professional, social and
+ethical.
+
+
+\subsection{Legal Implications}
+
+There are several laws which govern the legalities of computer software and the
+storage of personal data. The notable laws which apply to the monitoring of
+data gathered by mobile devices are:
+
+\begin{itemize}
+\item Data Protection Act\cite{dpa1998}
+\item Computer Misuse Act\cite{cma1990}
+\end{itemize}
+
+Other laws may still apply to the process of developing the software which
+performs this, but are less relevant to the actual collection of data.
+
+
+\subsubsection{Impacts of the Data Protection Act}
+Monitoring data undoubtedly also means storing data and any computerised data
+falls under the Data Protection Act; therefore, any monitoring is going to be
+affected by the Data Protection Act.
+
+\gls{ICO} has released guidelines\cite{ico2012cloud} on the use of cloud 
+computing and how it can be kept legal within the Data Protection Act. These
+mainly state that it is essential to have a contract in place with a trusted
+cloud storage provider that will adhere to UK law. This might be especially
+difficult with many cloud providers being non-UK or even -EU based.
+
+The EU has made agreements with the US government for a safe harbour for
+private data that could be stored on US servers\cite{eu2000safe}, this does
+help with some issues that storing data on a non-EU cloud, but given the way in
+which clouds tend to operate, there is no non-contractual way in which this can
+be guaranteed.
+
+\subsubsection{Impacts of the Computer Misuse Act}
+The Computer Misuse Act does not affect the use of mobile devices for monitoring
+purposes as much as one would suspect. The main issue comes that section 1 of
+this act defines misuse as ``the unauthorised access to computer
+material''\cite{cma1990}. Sections 2 and 3 also define other forms of misuse, 
+but as monitoring would fall under the access of computer material, they do not
+apply.
+
+The problem comes that the access could be implied simply by the user installing
+the application. Most applications will also have terms and conditions or will
+be distributed in such a way that the user is accepting the access to
+information providing by sensors before they install the application (e.g. the
+Android permission system).
+
+Obviously, if an application could hide the fact it was collecting data from a
+permission system and does not disclose this use in terms and conditions, then
+an argument could be made that it is breaking this act.
+
+
+\subsection{Professional Implications}
+
+Section 1.a of the BSC Code of Conduct states that ``[You shall] have due regard
+for the public health, privacy, security and wellbeing of others and the
+environment''\cite{bsc2011conduct}. This would imply that you must secure any
+data collected through the monitoring of mobile devices. Having due regard for
+an individuals privacy, might also imply that the results of the monitoring must 
+be kept private, and not, for example, sold to another company to generate
+revenue.
+
+Section 2.f also discusses avoidance of malicious and negligent action which
+could imply that any professional should not be developing a system which
+monitors mobile devices for malicious purposes.
+
+
+\subsection{Social Implications}
+
+There is a lot of good that can come from the monitoring of mobile devices and
+as mentioned there may be many good reasons for application developers to
+perform monitoring. Android 4.0 added the ability to monitor roaming data 
+usage, so a user could set a warning message when they reach a certain amount 
+of usage, and to cap their usage at a different limit\cite{android2011ics}; 
+this feature gives the user more control over the use of their mobile phone, 
+and prevents them from spending more than they need to on their phone bill.
+
+Given that less that 1\% of all UK premises receive no 3G connection from any
+provider and that only around 23\% of all geographical areas in the UK receive
+no 3G connection from any provider\cite{offcom2013infastructure} and that the
+figures for 2G connections are even less, it is difficult to not be connected
+to a form of network. With the recent adoption of 4G networks these figures are
+likely to decrease even further.
+
+Given that a lot of services provide synchronisation to the cloud, it is
+difficult to escape the pressures of work when emails can be delivered to a
+mobile device so easily. There have been studies into the affects of using
+email constantly against taking vacations from emails leading to reduced stress
+and increased productivity\cite{mark2012pace}. Similar studies have also been
+performed on the mental welfare through the increased use of
+Facebook\cite{kross2013facebook}, where increased use lead to the increased
+chances of depression in young adults.
+
+Monitoring data could be one of the possible reasons why there are such
+stresses in modern day life, but it could also allow stress to be reduced by
+limiting access to certain applications or suggesting improvements to fitness
+and diet.
+
+
+\subsection{Ethical Implications}
+The final consideration is that of ethics; it may be legal, professional and
+socially acceptable to develop an application which monitors some information
+from a users device, but the purpose or reasons for doing so may not be
+ethical.
+
+Of course ethics are a very personal viewpoint, to help standardise ethics, the
+Computer Ethics Institute has released ten commandments\cite{ceiXcommandments} 
+which, if followed, would deem a application ethical.
+
+The author has his own views on what makes an application ethical; using Android
+as an example, there should be a reasonable explanation as to why an
+application wants to access a protected API and this reason should be presented
+to the user, rather than just the protect API elements an application has.
+
+\newpage
+\section{Conclusions}
+
+Yes, mobile devices have probably aided in being the most monitored individuals
+in history. To say mobile devices are the only reason for this would be an
+unsound argument; though location could be seen as more sensitive than internet
+history, for example.
+
+Mobile devices just add a lot more ways in which individuals can be monitored;
+however, the access to these systems is more strictly controlled compared to
+the standard PCs or laptops. Whilst this is a good step in the right direction,
+there are also additional items which cannot be so strictly controlled as it is
+stored one systems external to the device (i.e. the \gls{GSM} network).
 
 \newpage
 \bibliographystyle{IEEEtran}
